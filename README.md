@@ -2,11 +2,12 @@
 
 A python program for automated synthetic visual data creation.
 
+
 ### Features
 
-* 
+* Easy-to-use interactive GUI for collecting data
 * Export your data collection to portable folder
-* Supporting custom shadow and reflection catchers
+* Supports custom shadow and reflection catchers
 
 ### Requirements
 
@@ -15,3 +16,7 @@ A python program for automated synthetic visual data creation.
   * imageio
   * PIL
   * numpy
+
+### Usage
+
+Every single project is a new data collection and consists of some environments and some objects.
