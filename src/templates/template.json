@@ -1,0 +1,389 @@
+{
+  "standards": {
+    "environments": {
+      "360image": {
+        "type": "360image",
+        "image": "",
+        "colorspaceImage": "Raw",
+        "strength": "1",
+        "frames": 10,
+        "size": [1280, 720],
+        "path": "",
+        "compositorPreset": "maddinv1",
+        "compositorValues": {},
+        "variables": {},
+        "objects": {},
+        "settingsScene": {"bloom": {"type": "bloom"}, "gtao": {"type": "gtao"}, "ssr": {"type": "ssr"}}
+      },
+      "360imagelabel": {
+        "type": "360imagelabel",
+        "image": "",
+        "label": "",
+        "colorspaceImage": "Raw",
+        "colorspaceLabel": "Raw",
+        "strength": "1",
+        "frames": 10,
+        "size": [1280, 720],
+        "path": "",
+        "compositorPreset": "maddinv1",
+        "compositorValues": {},
+        "variables": {},
+        "objects": {},
+        "settingsScene": {"bloom": {"type": "bloom"}, "gtao": {"type": "gtao"}, "ssr": {"type": "ssr"}}
+      },
+      "360imagelabeljson": {
+        "type": "360imagelabeljson",
+        "image": "",
+        "label": "",
+        "colorspaceImage": "Raw",
+        "strength": "1",
+        "frames": 10,
+        "size": [1280, 720],
+        "path": "",
+        "compositorPreset": "maddinv1",
+        "compositorValues": {},
+        "variables": {},
+        "objects": {},
+        "settingsScene": {"bloom": {"type": "bloom"}, "gtao": {"type": "gtao"}, "ssr": {"type": "ssr"}}
+      }
+    },
+    "objects": {
+      "blenderobject": {
+        "type": "blenderobject",
+        "source": "",
+        "object": "",
+        "annid": "0",
+        "groups": []
+      }
+    },
+    "cameras": {
+      "standard": {
+        "type": "standard",
+        "collections": ["Miscellaneous"],
+        "position": ["0", "0", "0"],
+        "rotation": ["0", "0", "0"],
+        "focal": "50"
+      }
+    },
+    "lights": {
+      "point": {
+        "type": "point",
+        "power": "100",
+        "size": "1",
+        "position": ["0", "0", "0"],
+        "rotation": ["0", "0", "0"],
+        "collections": ["Miscellaneous"]
+      },
+      "area": {
+        "type": "area",
+        "power": "100",
+        "shape": "Rectangle",
+        "dimensions": ["1", "1"],
+        "position": ["0", "0", "0"],
+        "rotation": ["0", "0", "0"],
+        "collections": ["Miscellaneous"]
+      },
+      "sun": {
+        "type": "sun",
+        "power": "1",
+        "size": "10",
+        "position": ["0", "0", "0"],
+        "rotation": ["0", "0", "0"],
+        "collections": ["Miscellaneous"]
+      }
+    },
+    "meshes": {
+      "catcherShadowSimple": {
+        "type": "catcherShadowSimple",
+        "dimensions": [1, 1],
+        "scale": ["1", "1", "1"],
+        "position": ["0", "0", "0"],
+        "rotation": ["0", "0", "0"],
+        "collections": ["Only Shadow Catcher"],
+        "materialPreset": "streetv1",
+        "materialValues": {}
+      },
+      "catcherReflectionSimple": {
+        "type": "catcherReflectionSimple",
+        "dimensions": [1, 1],
+        "scale": ["1", "1", "1"],
+        "position": ["0", "0", "0"],
+        "rotation": ["0", "0", "0"],
+        "collections": ["Only Reflection Catcher"],
+        "materialPreset": "streetv1",
+        "materialValues": {}
+      },
+      "emitterObjectsSimple": {
+        "type": "emitterObjectsSimple",
+        "dimensions": [1, 1],
+        "scale": ["1", "1", "1"],
+        "position": ["0", "0", "0"],
+        "rotation": ["0", "0", "0"],
+        "collections": ["Objects"],
+        "group": "",
+        "number": 1,
+        "seed": "1",
+        "rotationRandom": "0",
+        "phase": "0",
+        "phaseRandom": "0",
+        "sizeObjects": "1",
+        "sizeRandom": "0",
+        "emitterShow": "0"
+      }
+    },
+    "settingsScene": {
+      "bloom": {"type": "bloom", "enabled": true, "threshold": 0.8, "radius": 8, "intensity": 0.03},
+      "gtao": {"type": "gtao", "enabled": true, "distance": 5},
+      "ssr": {"type": "ssr", "enabled": true, "halfRes": false, "refraction": true}
+    }
+  },
+  "types": {
+    "environments": {
+      "360image": {
+        "name": "360\u00b0 Only Image",
+        "image": {"name": "Environment Image", "type": "image"},
+        "colorspaceImage": {"name": "Image Colorspace", "type": "listmenu", "options": ["sRGB", "Raw"]},
+        "strength": {"name": "Strength (Brightness) of Background", "type": "driver", "default": "1"},
+        "frames": {"name": "Number of Frames", "type": "integer", "default": 10},
+        "size": {"name":  "Render Size", "type": "array:integer", "num": 2, "default": [1280, 720], "names": ["W:", "H:"]},
+        "path": {"name": "Render Path", "type": "directory"},
+        "objects": {"name": "Environment Objects", "type": "envobjects", "options": {"cameras": "Cameras", "lights": "Lights", "meshes": "Meshes/Other"}},
+        "compositorPreset": {"name": "Compositor Preset", "type": "listmenu", "options": ["maddinv1"]},
+        "compositorValues": {"name": "Compositor Custom Values", "type": "listbox:driver"},
+        "variables": {"name": "Custom Environment Variables", "type": "listbox:driver"},
+        "settingsScene": {
+          "name": "Render Settings (EEVEE)",
+          "type": "listbox:listbox:custom",
+          "options": {
+            "bloom": {
+              "name": "Bloom Settings",
+              "options": {
+                "enabled": {"name": "Enabled", "type": "boolean"},
+                "radius": {"name": "Radius", "type": "real"},
+                "intensitiy": {"name": "Intensity", "type": "real"},
+                "threshold": {"name": "Threshold", "type": "real"}
+              }
+            },
+            "gtao": {
+              "name": "Ambient Occlusion",
+              "options": {
+                "enabled": {"name": "Enabled", "type": "boolean"},
+                "distance": {"name": "Distance ", "type": "real"}
+              }
+            },
+            "ssr": {
+              "name": "Screen Space Reflections",
+              "options": {
+                "enabled": {"name": "Enabled", "type": "boolean"},
+                "helfRes": {"name": "Half Resolution", "type": "boolean"},
+                "refraction": {"name": "Refraction (glass)", "type": "boolean"}
+              }
+            }
+          }
+        }
+      },
+      "360imagelabel": {
+        "name": "360\u00b0 Image + Label",
+        "image": {"name": "Environment Image", "type": "image"},
+        "label": {"name": "Environment Label", "type": "image"},
+        "colorspaceImage": {"name": "Image Colorspace", "type": "listmenu", "options": ["sRGB", "Raw"]},
+        "colorspaceLabel": {"name": "Label Colorspace", "type": "listmenu", "options": ["Raw", "sRGB"]},
+        "strength": {"name": "Strength (Brightness) of Background", "type": "driver", "default": "1"},
+        "frames": {"name": "Number of Frames", "type": "integer", "default": 10},
+        "size": {"name":  "Render Size", "type": "array:integer", "num": 2, "default": [1280, 720], "names": ["W:", "H:"]},
+        "path": {"name": "Render Path", "type": "directory"},
+        "objects": {"name": "Environment Objects", "type": "envobjects", "options": {"cameras": "Cameras", "lights": "Lights", "meshes": "Meshes/Other"}},
+        "compositorPreset": {"name": "Compositor Preset", "type": "listmenu", "options": ["maddinv1"]},
+        "compositorValues": {"name": "Compositor Custom Values", "type": "listbox:driver"},
+        "variables": {"name": "Custom Environment Variables", "type": "listbox:driver"},
+        "settingsScene": {
+          "name": "Render Settings (EEVEE)",
+          "type": "listbox:listbox:custom",
+          "options": {
+            "bloom": {
+              "name": "Bloom Settings",
+              "options": {
+                "enabled": {"name": "Enabled", "type": "boolean"},
+                "radius": {"name": "Radius", "type": "real"},
+                "intensitiy": {"name": "Intensity", "type": "real"},
+                "threshold": {"name": "Threshold", "type": "real"}
+              }
+            },
+            "gtao": {
+              "name": "Ambient Occlusion",
+              "options": {
+                "enabled": {"name": "Enabled", "type": "boolean"},
+                "distance": {"name": "Distance ", "type": "real"}
+              }
+            },
+            "ssr": {
+              "name": "Screen Space Reflections",
+              "options": {
+                "enabled": {"name": "Enabled", "type": "boolean"},
+                "helfRes": {"name": "Half Resolution", "type": "boolean"},
+                "refraction": {"name": "Refraction (glass)", "type": "boolean"}
+              }
+            }
+          }
+        }
+      },
+      "360imagelabeljson": {
+        "name": "360\u00b0 Image + Label (JSON)",
+        "image": {"name": "Environment Image", "type": "image"},
+        "label": {"name": "Environment Label", "type": "file", "filetypes": [["JSON file", "*.json"]]},
+        "colorspaceImage": {"name": "Image Colorspace", "type": "listmenu", "options": ["sRGB", "Raw"]},
+        "strength": {"name": "Strength (Brightness) of Background", "type": "driver", "default": "1"},
+        "frames": {"name": "Number of Frames", "type": "integer", "default": 10},
+        "size": {"name":  "Render Size", "type": "array:integer", "num": 2, "default": [1280, 720], "names": ["W:", "H:"]},
+        "path": {"name": "Render Path", "type": "directory"},
+        "objects": {"name": "Environment Objects", "type": "envobjects", "options": {"cameras": "Cameras", "lights": "Lights", "meshes": "Meshes/Other"}},
+        "compositorPreset": {"name": "Compositor Preset", "type": "listmenu", "options": ["maddinv1"]},
+        "compositorValues": {"name": "Compositor Custom Values", "type": "listbox:driver"},
+        "variables": {"name": "Custom Environment Variables", "type": "listbox:driver"},
+        "settingsScene": {
+          "name": "Render Settings (EEVEE)",
+          "type": "listbox:listbox:custom",
+          "options": {
+            "bloom": {
+              "name": "Bloom Settings",
+              "options": {
+                "enabled": {"name": "Enabled", "type": "boolean"},
+                "radius": {"name": "Radius", "type": "real"},
+                "intensitiy": {"name": "Intensity", "type": "real"},
+                "threshold": {"name": "Threshold", "type": "real"}
+              }
+            },
+            "gtao": {
+              "name": "Ambient Occlusion",
+              "options": {
+                "enabled": {"name": "Enabled", "type": "boolean"},
+                "distance": {"name": "Distance ", "type": "real"}
+              }
+            },
+            "ssr": {
+              "name": "Screen Space Reflections",
+              "options": {
+                "enabled": {"name": "Enabled", "type": "boolean"},
+                "helfRes": {"name": "Half Resolution", "type": "boolean"},
+                "refraction": {"name": "Refraction (glass)", "type": "boolean"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "blenderobject": {
+        "name": "Blender Object (single)",
+        "source": {"name": "Source Path", "type": "file", "filetypes": [["Blender file", "*.blend"]]},
+        "object": {"name": "Object Name", "type": "string"},
+        "annid": {"name": "Annotation ID", "type": "driver", "default": "0"},
+        "groups": {"name": "Object Groups", "type": "checkmenu", "options": "rel:options:objects:groups:option/name"}
+      }
+    },
+    "cameras": {
+      "standard": {
+        "name": "Default Camera",
+        "display": "",
+        "collections": {"name": "Collections", "type": "checkmenu", "options": "rel:options:environments:collections:option/name"},
+        "position": {"name": "Position", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "rotation": {"name": "Rotation (rad)", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "focal": {"name": "Focal Length", "type": "driver", "default": "30"}
+      }
+    },
+    "lights": {
+      "point": {
+        "name": "Point Light",
+        "display": "circle",
+        "collections": {"name": "Collections", "type": "checkmenu", "options": "rel:options:environments:collections:option/name"},
+        "size": {"name":  "Size", "type": "driver", "default": "1"},
+        "position": {"name": "Position", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "rotation": {"name": "Rotation", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "power": {"name": "Power (W)", "type": "driver", "default": "100"}
+      },
+      "area": {
+        "name": "Area Light",
+        "display": "vector3d",
+        "collections": {"name": "Collections", "type": "checkmenu", "options": "rel:options:environments:collections:option/name"},
+        "shape": {"name": "Shape", "type": "listmenu", "options": ["Rectangle", "Ellipse"]},
+        "dimensions": {"name": "Size", "type": "array:driver", "num": 2, "default": "1", "names": ["X:", "Y:"]},
+        "position": {"name": "Position", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "rotation": {"name": "Rotation", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "power": {"name": "Power (W)", "type": "driver", "default": "100"}
+      },
+      "sun": {
+        "name": "Sun Light",
+        "display": "circle+dir",
+        "collections": {"name": "Collections", "type": "checkmenu", "options": "rel:options:environments:collections:option/name"},
+        "position": {"name": "Position", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "rotation": {"name": "Rotation", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "power": {"name": "Power (S0)", "type": "driver", "default": "1"}
+      }
+    },
+    "meshes": {
+      "catcherShadowSimple": {
+        "name": "Simple Shadow Catcher",
+        "display": "rectangle",
+        "collections": {"name": "Collections", "type": "checkmenu", "options": "rel:options:environments:collections:option/name"},
+        "dimensions": {"name": "Dimensions", "type": "array:float", "num": 2, "default": 1, "names": ["X:", "Y:"]},
+        "scale": {"name": "Scale", "type": "array:driver", "num": 3, "default": "1", "names": ["X:", "Y:", "Z:"]},
+        "position": {"name": "Position", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "rotation": {"name": "Rotation", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "materialPreset": {"name": "Material Preset", "type": "listmenu", "options": ["streetv1"]},
+        "materialValues": {"name": "Material Values", "type": "listbox:driver", "default": "0"}
+      },
+      "catcherReflectionSimple": {
+        "name": "Simple Reflection Catcher",
+        "display": "rectangle",
+        "collections": {"name": "Collections", "type": "checkmenu", "options": "rel:options:environments:collections:option/name"},
+        "dimensions": {"name": "Dimensions", "type": "array:float", "num": 2, "default": 1, "names": ["X:", "Y:"]},
+        "scale": {"name": "Scale", "type": "array:driver", "num": 3, "default": "1", "names": ["X:", "Y:", "Z:"]},
+        "position": {"name": "Position", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "rotation": {"name": "Rotation", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "materialPreset": {"name": "Material Preset", "type": "listmenu", "options": ["streetv1"]},
+        "materialValues": {"name": "Material Values", "type": "listbox:driver", "default": "0"}
+      },
+      "emitterObjectsSimple": {
+        "name": "Simple Object Emitter",
+        "display": "vector3d+dir",
+        "collections": {"name": "Collections", "type": "checkmenu", "options": "rel:options:environments:collections:option/name"},
+        "dimensions": {"name": "Dimensions", "type": "array:float", "num": 2, "default": 1, "names": ["X:", "Y:"]},
+        "scale": {"name": "Scale", "type": "array:driver", "num": 3, "default": "1", "names": ["X:", "Y:", "Z:"]},
+        "position": {"name": "Position", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "rotation": {"name": "Rotation", "type": "array:driver", "num": 3, "default": "0", "names": ["X:", "Y:", "Z:"]},
+        "group": {"name": "Object Group", "type": "listmenu", "options": "rel:options:objects:groups:option/name"},
+        "number": {"name": "Object Count", "type": "integer", "default": 1},
+        "seed": {"name": "Seed", "type": "driver", "default": "0"},
+        "rotationRandom": {"name": "Random Rotation (0-1)", "type": "driver", "default": "0"},
+        "phase": {"name": "Phase", "type": "driver", "default": "0"},
+        "phaseRandom": {"name": "Random Phase (0-1)", "type": "driver", "default": "0"},
+        "sizeObjects": {"name": "Object Size", "type": "driver", "default": "1"},
+        "sizeRandom": {"name": "Random Object Size (0-1)", "type": "driver", "default": "0"},
+        "emitterShow": {"name": "Show Emitter? (0/1)", "type": "driver", "default": "0"}
+      }
+    }
+  },
+  "example": {
+    "environments": {},
+    "objects": {},
+    "options": {
+      "environments": {
+        "layers": [
+          {"name": "Raw Image", "passes": ["Combined", "Environment", "Bloom"]},
+          {"name": "Shadow Catcher", "passes": ["Shadow", "Ambient Occlusion", "Environment"]},
+          {"name": "Reflection Catcher", "passes": ["Specular Light", "Ambient Occlusion"]},
+          {"name": "Reflection Catcher Reference", "passes": ["Specular Light", "Environment", "Ambient Occlusion"]}
+        ],
+        "collections": [
+          {"name": "Miscellaneous", "layers": ["Raw Image", "Shadow Catcher"]},
+          {"name": "Objects", "layers": ["Raw Image", "Shadow Catcher", "Reflection Catcher"]},
+          {"name": "Only Shadow Catcher", "layers": ["Shadow Catcher"]},
+          {"name": "Only Reflection Catcher", "layers": ["Reflection Catcher", "Reflection Catcher Reference"]},
+          {"name": "Hidden", "layers": []}
+        ],
+        "variables": {}
+      },
+      "objects": {"groups": []}
+    }
+  }
+}
