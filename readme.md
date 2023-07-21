@@ -4,7 +4,6 @@ A python program for automated synthetic visual data creation.
 
 ### Features
 
-* 
 * Export your data collection to portable folder
 * Supporting custom shadow and reflection catchers
 
